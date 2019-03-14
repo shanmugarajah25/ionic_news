@@ -2,3 +2,15 @@
   max-height: 35vh;
   overflow: hidden;
 }
+.wrap {
+  word-wrap: break-word;
+  font-size: 0.67em;
+  font-weight: bold;
+  font-family: 'Catamaran', sans-serif;
+}
+
+.img {
+  max-width: 100%;
+  border: 0;
+  max-height: 150px;
+}
