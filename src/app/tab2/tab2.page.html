@@ -1,9 +1,39 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Tab Two
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content></ion-content>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+        Home
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content padding>
+  
+    <ion-card *ngFor="let item of items">
+      <ion-img *ngIf="item._embedded['wp:featuredmedia']" [src]="item._embedded['wp:featuredmedia'][0].source_url"></ion-img>
+      <ion-card-header>
+        <ion-card-subtitle>{{ item.date | date:dateFormat }}</ion-card-subtitle>
+        <ion-card-title [innerHTML]="item.title.rendered"></ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <div [innerHTML]="item.excerpt.rendered"></div>
+        <div>
+          <ion-button href="/{{item.slug}}" routerDirection="root" color="primary" size="small">Read more...</ion-button>
+        </div>
+        Posted in W<br/>
+        Tagged X, Y, Z
+      </ion-card-content>
+    </ion-card>
+  
+    <ion-infinite-scroll threshold="100px" (ionInfinite)="getMorePosts($event)" [disabled]="infiniteScrollDisabled()">
+      <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  
+  </ion-content>
+  
+  
+  
+  

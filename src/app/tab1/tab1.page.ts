@@ -21,6 +21,14 @@ constructor(public http: HttpClient) {
   });
 }
 
+mySlideOptions = {
+  initialSlide: 1,
+  loop: true,
+  autoplay: 5800,
+  pager: true
+}
+
+
 present() {
   // this.load = this.loader.create({
   //   spinner: 'hide',

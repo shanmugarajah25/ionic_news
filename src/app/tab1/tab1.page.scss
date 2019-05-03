@@ -14,3 +14,27 @@
   border: 0;
   max-height: 150px;
 }
+
+.innerHTML img{
+  max-width: 100%;
+  border: 0;
+  max-height: 10px;
+}
+
+
+ion-card{
+  margin: 0 !important;
+  width: 100% !important; 
+    border-bottom: 2px solid #d33939
+}
+h2{
+  font-family: 'Catamaran', sans-serif;
+  word-wrap: break-word;
+  //font-size: 0.67em;
+  font-weight: bold;
+  font-family: 'Catamaran', sans-serif;
+}
+.img{
+  //max-height: 150px;
+  max-height:500px !important;
+}

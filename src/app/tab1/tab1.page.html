@@ -1,48 +1,70 @@
-<!-- <ion-content no-padding>
-  <ion-card no-padding>
-   
-
-    <ion-card-content>
-<ion-card-title>
-
-<h2>  Powerd by Tamilvalai</h2>
-
-</ion-card-title>
-</ion-card-content>
-</ion-card>
-<ion-list>
-  <div *ngFor="let item of data;let i=index" text-wrap >
-  <ion-item text-wrap style="word-wrap: break-word; word-break: break-all;">
-    <ion-thumbnail slot="start" >
-      <img src="{{item.jetpack_featured_media_url}}">
-    </ion-thumbnail>
-      <p text-wrap  class="wrap" >{{item.title.rendered}}</p>
-  </ion-item>
-  </div>
-</ion-list>
-</ion-content> -->
-
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
-   </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-    <div *ngFor="let item of data;let i=index" text-wrap >
+<ion-content no-padding>
+  <ion-list *ngIf="data.length === 0">
+    <div>
         <ion-card no-padding>
             <ion-card-content>
               <ion-card-title>
-                <p>
-                    <br/>
-                </p>
-              <!--  <ion-chip *ngFor="let date of news.date">
-                  <label color="fav">{{date}}</label>
-                </ion-chip> -->
-              </ion-card-title>
-              <p class="img" [innerHTML]="item.content.rendered"></p>
+                <ion-skeleton-text animated></ion-skeleton-text>
+                </ion-card-title>
             </ion-card-content>
-        </ion-card>
+          </ion-card>
+
+      <ion-item *ngFor="let item of [1,2,3,4,5,6,7]">
+        <ion-thumbnail slot="start">
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-thumbnail>
+        <ion-label>
+          <h3>
+            <ion-skeleton-text animated style="width:65%"></ion-skeleton-text>
+          </h3>
+          <p>
+            <ion-skeleton-text animated style="width:98%"></ion-skeleton-text>
+          </p>
+          <p>
+            <ion-skeleton-text animated style="width:84%"></ion-skeleton-text>
+          </p>
+        </ion-label>
+      </ion-item>
     </div>
+  </ion-list>
+
+  <div *ngIf="data.length>0">
+    <div *ngFor="let item of data;let i=index" (click)="openNewsPage(item)">
+        <div *ngIf="i==3">
+      <ion-card (swipe)="swipeEvent($event)" no-padding>
+              <div *ngIf="item.jetpack_featured_media_url != 0">
+              <img src="{{item.jetpack_featured_media_url}}" class="img"/>
+          </div>
+      <ion-card-content>
+      <ion-card-title>
+          <h2>  {{item.title.rendered}}</h2>
+      </ion-card-title>
+      </ion-card-content>
+      </ion-card>
+      </div>
+  </div>
+
+  </div>
+  <ion-list>
+    <div *ngFor="let item of data;let i=index" text-wrap>
+      <ion-item text-wrap style="word-wrap: break-word; word-break: break-all;">
+        <ion-thumbnail slot="start">
+          <img src="{{item.jetpack_featured_media_url}}">
+        </ion-thumbnail>
+        <p text-wrap class="wrap">{{item.title.rendered}}</p>
+      </ion-item>
+    </div>
+  </ion-list>
+
+<ion-list>
+  <div *ngFor="let item of data;let i=index" text-wrap>
+    <div class="raj">
+    <ion-item text-wrap style="word-wrap: break-word; word-break: break-all;">
+      <p>
+        <span [innerHTML]="item.content.rendered"></span>
+      </p>
+    </ion-item>
+  </div>
+  </div>
+</ion-list>
 </ion-content>
